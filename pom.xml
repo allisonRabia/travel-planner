@@ -28,11 +28,25 @@
   </scm>
   <properties>
     <java.version>21</java.version>
+    <openapi.generator.version>7.4.0</openapi.generator.version>
   </properties>
   <dependencies>
+
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>0.2.4</version>
+    </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.2.0</version>
     </dependency>
 
     <dependency>
@@ -41,11 +55,13 @@
       <scope>runtime</scope>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <optional>true</optional>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
@@ -55,6 +71,45 @@
 
   <build>
     <plugins>
+
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>${openapi.generator.version}</version>
+        <executions>
+          <execution>
+            <id>generate-api</id>
+            <phase>generate-sources</phase>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <library>spring-boot</library>
+              <inputSpec>${project.basedir}/src/main/resources/travel-planner-openapi.yaml</inputSpec>
+              <generatorName>spring</generatorName>
+              <output>${project.build.directory}/generated-sources/openapi</output>
+              <apiPackage>app.travelplanner.api</apiPackage>
+              <modelPackage>app.travelplanner.model</modelPackage>
+              <invokerPackage>app.travelplanner.invoker</invokerPackage>
+              <generateSupportingFiles>true</generateSupportingFiles>
+              <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
+              <configOptions>
+                <useJakartaEe>true</useJakartaEe>
+                <useTags>true</useTags>
+                <throwsException>true</throwsException>
+                <useBeanValidation>true</useBeanValidation>
+                <basePackage>app.travelplanner</basePackage>
+                <!-- KEY CHANGES: These options control what gets generated -->
+                <interfaceOnly>true</interfaceOnly>
+                <skipDefaultInterface>false</skipDefaultInterface>
+                <generateControllerFromExamples>false</generateControllerFromExamples>
+                <hideGenerationTimestamp>true</hideGenerationTimestamp>
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
