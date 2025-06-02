@@ -101,7 +101,7 @@
                 <basePackage>app.travelplanner</basePackage>
                 <!-- KEY CHANGES: These options control what gets generated -->
                 <interfaceOnly>true</interfaceOnly>
-                <skipDefaultInterface>false</skipDefaultInterface>
+                <skipDefaultInterface>true</skipDefaultInterface>
                 <generateControllerFromExamples>false</generateControllerFromExamples>
                 <hideGenerationTimestamp>true</hideGenerationTimestamp>
               </configOptions>
