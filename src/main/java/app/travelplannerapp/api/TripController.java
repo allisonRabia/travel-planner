@@ -17,3 +17,5 @@ public class TripController implements TripsApi {
         return ResponseEntity.ok(List.of(new Trip("MyTrip", LocalDate.now(), LocalDate.now())));
     }
 }
+
+//comment
