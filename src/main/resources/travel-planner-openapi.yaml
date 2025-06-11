@@ -23,6 +23,42 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Trip'
+    post:
+      summary: Add Trip
+      operationId: addTrip
+      tags:
+        - Trips
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Trip'
+      responses:
+        '201':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+  /trips/{tripId}:
+    get:
+      summary: Get trip by ID
+      operationId: getTripById
+      tags:
+        - Trips
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Trip'
+
 
 components:
   schemas:
