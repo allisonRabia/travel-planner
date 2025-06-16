@@ -22,7 +22,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Trip'
+                  $ref: '#/components/schemas/TripDTO'
     post:
       summary: Add Trip
       operationId: addTrip
@@ -33,7 +33,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/Trip'
+              $ref: '#/components/schemas/TripDTO'
       responses:
         '201':
           description: Success
@@ -42,7 +42,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/Trip'
+                  $ref: '#/components/schemas/TripDTO'
 
   /trips/{tripId}:
     get:
@@ -64,11 +64,11 @@ paths:
           content:
             application/json:
               schema:
-               $ref: '#/components/schemas/Trip'
+               $ref: '#/components/schemas/TripDTO'
 
 components:
   schemas:
-    Trip:
+    TripDTO:
       type: object
       required:
         - title
