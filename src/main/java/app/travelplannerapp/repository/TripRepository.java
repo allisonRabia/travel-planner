@@ -1,5 +1,6 @@
 package app.travelplannerapp.repository;
 
+import app.travelplanner.model.TripDTO;
 import app.travelplannerapp.model.Trip;
 import java.util.UUID;
 import org.springframework.data.repository.CrudRepository;
